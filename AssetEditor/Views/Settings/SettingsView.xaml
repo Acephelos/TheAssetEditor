@@ -14,13 +14,14 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>
-    
-    <Grid>
+
+    <Grid Height="auto" Width="auto">
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
         <GroupBox Grid.Row="0" Header="Game Directories">
             <ItemsControl ItemsSource="{Binding GameDirectores}">
                 <ItemsControl.ItemContainerStyle>
@@ -38,7 +39,7 @@
                                 <ColumnDefinition Width="500"/>
                                 <ColumnDefinition Width="50"/>
                             </Grid.ColumnDefinitions>
-                            
+
                             <TextBlock Grid.Column="0" Text="{Binding GameName}"/>
                             <TextBox Grid.Column="1" 
                                      Text="{Binding Path}" 
@@ -51,7 +52,27 @@
             </ItemsControl>
         </GroupBox>
 
-        <GroupBox Grid.Row="1" Header="Other" Margin="0,5,0,5">
+        <GroupBox Grid.Row="1" Header="Audio Modding">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Wwise Console"/>
+                <TextBox Grid.Row="0" Grid.Column="1" 
+                    Text="{Binding WwisePath}"
+                    behaviors:TextBoxExtensions.Watermark="Path to WwiseConsole.exe"
+                    IsReadOnly="True"/>
+                <Button Grid.Column="2" Content="..." Command="{Binding BrowseCommand}"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Other" Margin="0,5,0,5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -79,7 +100,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="1" Text=":"/>
                 <CheckBox  Grid.Row="1" Grid.Column="2" IsChecked="{Binding UseTextEditorForUnknownFiles, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Load Ca Packs By Default"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Load CA Packs By Default"/>
                 <TextBlock Grid.Row="2" Grid.Column="1" Text=":"/>
                 <CheckBox  Grid.Row="2" Grid.Column="2" IsChecked="{Binding LoadCaPacksByDefault, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
